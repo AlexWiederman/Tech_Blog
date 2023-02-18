@@ -1,17 +1,22 @@
 [
   {
-    "name": "Music Near Me",
-    "description": "A mobile app that will send you notifications whenever a concert is playing in your area.",
-    "needed_funding": 5000
+    "title": "First Note",
+    "description": "This is an example of a description 1"
+    
   },
   {
-    "name": "The Ultimate Tech Quiz",
-    "description": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
-    "needed_funding": 10000
+    "title": "Second Note",
+    "description": "This is an example of a description 2"
+   
   },
   {
-    "name": "Roll 'Em Up",
-    "description": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
-    "needed_funding": 800
+    "title": "Third Note",
+    "description": "This is an examplle of a description 3"
+   
+  },
+  {
+    "title": "Fourtht Note",
+    "description": "This is an example of a description 4"
+   
   }
 ]

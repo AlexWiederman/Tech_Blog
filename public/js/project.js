@@ -6,7 +6,6 @@ const createCommentButtonHandler = async (event) => {
 }
 
 
-document
-  .querySelector('#create-comment')
-  .addEventListener('click', createCommentButtonHandler);
+const  comment = document.querySelector('.create-comment')
+  comment.addEventListener('click', createCommentButtonHandler);
 

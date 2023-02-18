@@ -1,9 +1,12 @@
 
-
+const createCommentButtonHandler = async (event) => {
+  event.preventDefault();
+  document.location.replace('/comment');
+  console.log('Test')
+}
 
 
 document
-  .querySelector('.project-list')
-  .addEventListener('click', delButtonHandler);
+  .querySelector('#create-comment')
+  .addEventListener('click', createCommentButtonHandler);
 
-  

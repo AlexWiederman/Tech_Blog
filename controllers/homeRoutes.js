@@ -96,8 +96,9 @@ router.get('/comment/:id', async (req, res) => {
   }else {
     console.log(userData)
 
+    const comment = userData
     // const comment = userData.get({ plain: true });
-    const comment = [{comment:"hello",project_id:"1"}]
+    // const comment = [{comment:"hello",project_id:"1"}]
 console.log(comment)
     res.render('comment', {
       ...comment,

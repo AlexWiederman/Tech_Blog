@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { Project, User, Comment } = require('../models');
+const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
+const Comment = require('../models/Comment')
 
 router.get('/', async (req, res) => {
   try {
@@ -77,6 +78,36 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+router.get('/comment/:id', async (req, res) => {
+  try {
+    // Find the comments assosiated with the get
+    const userData = await Comment.findAll({
+      where: {
+        project_id: req.params.id,
+      },
+      include: [{ model: Project }],
+    
+});
+    
+  if (userData.length == 0 ) {
+    res.render('comment')
+  }else {
+    console.log(userData)
+
+    // const comment = userData.get({ plain: true });
+    const comment = [{comment:"hello",project_id:"1"}]
+console.log(comment)
+    res.render('comment', {
+      ...comment,
+      logged_in: true
+    });
+  }
+  } catch (err) {
+   
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

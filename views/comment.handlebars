@@ -1,11 +1,57 @@
-<div class="text-center">
-  <h2>{{title}}</h2>
-  <p>{{description}}</p>
-  <p>Created by {{user.username}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money"></span>
-  </p>
-  <p>
-    <button class="btn btn-primary">Create a comment</button>
-  </p>
+<div class='row'>
+  <div class='col-auto'>
+    <h2>Welcome!</h2>
+  </div>
 </div>
+
+<div class='row mt-4'>
+  <div class='col-md-6'>
+    <h3>Create a New Comment:</h3>
+
+    <form class='form new-comment-form'>
+      <div class='form-group'>
+        <label for='comment-desc'>comment:</label>
+        <textarea
+          class='form-input'
+          id='comment-desc'
+          name='comment-desc'
+        ></textarea>
+      </div>
+      <div class='form-group'>
+        <button type='submit' class='btn btn-primary'>Create</button>
+      </div>
+    </form>
+  </div>
+
+
+    <div class='col-md-6 project-list'>
+      <h3>Current Comments:</h3>
+
+      {{#each comment as |comment|}}
+        <div class='row mb-2'>
+          <div class='col-md-8'>
+            <h4><a href='/project/{{project.id}}'>Description:
+                {{comment.comment}}</a></h4>
+          </div>
+          <div class='col-md-8'>
+            <h4><a href='/project/{{project.id}}'>Created:
+                {{comment.date_created}}</a></h4>
+          </div>
+          <div class='col-md-8'>
+            <h4><a href='/project/{{project.id}}'>By:
+                {{user.id}}</a></h4>
+          </div>
+          <div class='col-md-4'>
+            <button
+              class='btn btn-sm btn-danger'
+              data-id='{{project.id}}'
+            >DELETE</button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+ 
+</div>
+
+
+<script src="/js/comment.js"></script>

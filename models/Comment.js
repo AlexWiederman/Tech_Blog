@@ -22,13 +22,14 @@ Comment.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    username_id: {
+    project_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'project',
         key: 'id',
       },
     },
+   
   },
   {
     sequelize,

@@ -99,7 +99,7 @@ router.get('/comment/:id', async (req, res) => {
     // const comment = userData
     const comment = userData.get({ plain: true });
     // const comment = [{comment:"hello",project_id:"1"}]
-console.log(comment)
+console.log(`Log: ${comment}`)
     res.render('comment', {
       ...comment,
       logged_in: true

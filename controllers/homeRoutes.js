@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
-const Comment = require('../models/Comment')
+const Comment = require('../models/Comment');
 
 router.get('/', async (req, res) => {
   try {
@@ -19,9 +19,9 @@ router.get('/', async (req, res) => {
     const projects = projectData.map((project) => project.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      projects, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      projects,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -43,7 +43,7 @@ router.get('/project/:id', async (req, res) => {
 
     res.render('project', {
       ...project,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -63,7 +63,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -88,25 +88,24 @@ router.get('/comment/:id', async (req, res) => {
         project_id: req.params.id,
       },
       include: [{ model: Project }],
-    
-});
-    
-  if (userData.length == 0 ) {
-    res.render('comment')
-  }else {
-    console.log(userData)
-
-    // const comment = userData
-    const comment = userData.get({ plain: true });
-    // const comment = [{comment:"hello",project_id:"1"}]
-console.log(`Log: ${comment}`)
-    res.render('comment', {
-      ...comment,
-      logged_in: true
     });
-  }
+
+    if (userData.length == 0) {
+      res.render('comment');
+    } else {
+      // console.log(userData)
+
+      // const comment = userData
+      // const comment = userData.get({ plain: true });
+      const comments = userData.map((project) => project.get({ plain: true }));
+      // const comment = [{comment:"hello",project_id:"1"}]
+      console.log(...comments);
+      res.render('comment', {
+        comments,
+        logged_in: true,
+      });
+    }
   } catch (err) {
-   
     res.status(500).json(err);
   }
 });

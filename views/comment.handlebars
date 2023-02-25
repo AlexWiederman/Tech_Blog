@@ -1,12 +1,15 @@
 <div class='row'>
   <div class='col-auto'>
-    <h2>Welcome!</h2>
+    
+    <h2>Title: {{comments.project.title}}</h2>
+    <h3> Description: {{comments.project.description}}</h3>
+    
   </div>
 </div>
 
 <div class='row mt-4'>
   <div class='col-md-6'>
-    <h3>Create a New Comment:</h3>
+    <h3 name="createdID" id="{{comments.project.username_id}}">Create a New Comment:</h3>
 
     <form class='form new-comment-form'>
       <div class='form-group'>
@@ -18,7 +21,7 @@
         ></textarea>
       </div>
       <div class='form-group'>
-        <button type='submit' class='btn btn-primary'>Create</button>
+        <button type='submit' class='btn btn-primary projectid' id="{{comments.project.id}}" name="id">Create</button>
       </div>
     </form>
   </div>
@@ -27,24 +30,21 @@
     <div class='col-md-6 project-list'>
       <h3>Current Comments:</h3>
 
-      {{#each comment as |comment|}}
+      {{#each comments as |comment|}}
         <div class='row mb-2'>
           <div class='col-md-8'>
-            <h4><a href='/project/{{project.id}}'>Description:
-                {{comment.comment}}</a></h4>
+            <h4>Comment:{{comment.comment}}</h4>
           </div>
           <div class='col-md-8'>
-            <h4><a href='/project/{{project.id}}'>Created:
-                {{comment.date_created}}</a></h4>
+            <h4>Created:{{format_date comment.date_created}}</h4>
           </div>
           <div class='col-md-8'>
-            <h4><a href='/project/{{project.id}}'>By:
-                {{user.id}}</a></h4>
+            <h4>By:{{comment.username_id}}</h4>
           </div>
           <div class='col-md-4'>
             <button
               class='btn btn-sm btn-danger'
-              data-id='{{project.id}}'
+              data-id='{{comment.id}}' id="delete" onclick="buttonPressed"
             >DELETE</button>
           </div>
         </div>

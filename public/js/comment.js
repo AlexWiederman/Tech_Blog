@@ -3,13 +3,13 @@ const newFormHandler = async (event) => {
 
   const comment = document.querySelector('#comment-desc').value.trim();
   // console.log(JSON.stringify({comment}))
+  let projectID = document.querySelector('.projectid').id;
+console.log(projectID);
   if (comment) {
     const response = await fetch(`/api/comment`, {
       method: 'POST',
       body: JSON.stringify({ comment, projectID }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+     
     });
 
     if (response.ok) {
@@ -21,8 +21,7 @@ const newFormHandler = async (event) => {
   }
 };
 
-let projectID = document.querySelector('.projectid').id;
-console.log(projectID);
+
 
 
 document

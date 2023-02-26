@@ -80,7 +80,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/comment/:id', async (req, res) => {
+router.get('/comment/:id', withAuth,async (req, res) => {
   try {
     // Find the comments assosiated with the get
     const userData = await Comment.findAll({
